@@ -1,6 +1,7 @@
 package com.exercise.giallozafferano_def.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,4 +25,15 @@ public class RecipeIngredient {
     @MapsId("ingredientId")
     @JoinColumn(name = "ingredient_id")
     Ingredient ingredient;
+
+    @JsonProperty("ingredientId")
+    public Long getIngredientId() {
+        return ingredient != null ? ingredient.getId() : null;
+    }
+
+    @JsonProperty("ingredientName")
+    public String getIngredientName() {
+        return ingredient != null ? ingredient.getName() : null;
+    }
+
 }
